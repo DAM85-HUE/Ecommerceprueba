@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>tusolutionweb</title>
+		<title>pruebaphp</title>
 		<link rel="stylesheet" type="text/css" href="<?= base_url()?>plantilla/css/home.css"/>
 		<link rel="stylesheet" type="text/css" href="<?= base_url()?>plantilla/css/bootstrap.css.map"/>
 		<link rel="stylesheet" type="text/css" href="<?= base_url()?>plantilla/css/bootstrap.min.css"/>

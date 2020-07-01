@@ -10,26 +10,15 @@ class Inicio extends CI_Controller
     
     public function index()
     {
-
-
-
-  
- $this->load->helper('form');
- 
-        $this->load->view('administrador');
-      
-       
-   
-
-        $data['titulo'] = 'Subir imagen';
+$this->load->helper('form');
+ $this->load->view('administrador');
+       $data['titulo'] = 'Subir imagen';
         $this->load->view('headfoot/header', $data);
         $this->load->view('formulario');
         $this->load->view('headfoot/footer');
        
     }
-
-
-    public function subir()
+public function subir()
     {
         $dato = $this->input->post("cat_title");
         $short = $this->input->post("short_name");
@@ -39,18 +28,11 @@ class Inicio extends CI_Controller
             "dato"=>$dato,
 
             "short"=>$short,
-
-            "imagen"=>$nombre_imagen
-           
-        );
-
-
-
-         $this->subirImagen();
+             "imagen"=>$nombre_imagen
+         );
+           $this->subirImagen();
     }
-
-
-    public function add(){
+ public function add(){
 
 $this->load->model('subir_model');
 $this->subir_model->insertPrueba();
@@ -93,14 +75,8 @@ public function subirImagen()
     }
 
 
-   
 
 
 
 
-
-
-
-
-
-}
+ }

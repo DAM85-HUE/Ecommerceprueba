@@ -75,16 +75,8 @@ display: none;
 						<div class="panel panel-success">
 							<div class="panel-heading">
 								<div class="row">
-									<div class="col-md-3">Sl.No</div>
-									<div class="col-md-3">Imagen del producto</div>
-									<div class="col-md-3">nombre del producto</div>
-									<div class="col-md-3">Precio en $.</div>
-								</div>
-							</div>
-							<div class="panel-body"></div>
-							<div class="panel-footer"></div>
-						</div>
-					</div>
+									
+							
 				</li>
 				<li><a href="login"><span class="glyphicon glyphicon-user"></span>Iniciar session</a></li>
 					
@@ -112,30 +104,31 @@ display: none;
 			<div class="col-md-1"></div>
 			<div class="col-md-2 col-xs-12">
 				
-
-				<div id="get_category">
-
-				</div>
+                 <div id="get_category">
+                       </div>
 
 				<div class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#"><h4>Categorias</h4></a></li>
-					<li><a href="<?=base_url()?>category">Electronica</a></li>
-					<li><a href="<?=base_url()?>category">Ropa mujeres</a></li>
-					<li><a href="<?=base_url()?>category">Ropa niños</a></li>
-					<li><a href="<?=base_url()?>category">muebles</a></li>
-					<li><a href="<?=base_url()?>category">Electrodomesticos</a></li>
-					<li><a href="<?=base_url()?>category">Gadgets electronicos</a></li>
-				</div> 
+<?php
+$query = $this->db->query("SELECT * FROM categories LIMIT 100");
+
+foreach ($query->result() as $row)
+{echo '<li onClick="fill(\''.addslashes($row->cat_title).'\');"><a href="profil.php?id='.$row->cat_title.'">'.$row->cat_title.'</a></li>';}?> 
+				</div>
 				<div id="get_brand">
 				</div>
-				<div class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#"><h4>Marcas</h4></a></li>
-					<li><a href="#">HP</a></li>
-					<li><a href="#">Samsung</a></li>
-					<li><a href="#">Aple</a></li>
-					<li><a href="#">Sony</a></li>
-					<li><a href="#">Lg</a></li>
-					<li><a href="#">Cloth Brand</a></li>
+				<div class="nav nav-pills nav-stacked" >
+					<li class="active" ><a href="#"></a></li>
+					
+
+
+
+
+
+
+
+
+
 				</div>
 			</div>
 
@@ -150,48 +143,38 @@ display: none;
 					<div class="panel-body">
 						<div id="get_product">
 
-<table>
-	
 
-	<tr>
-
-
-
-
-
-
-
-	</tr>
-
-<?php
+	<?php
 
 
 
 foreach ($consulta->result() as $fila) {?>
 
 
-	<tr>
 
 
+				<div class="col-xs-12 col-sm-6 col-md-4">
 
-				<div class='col-md-4'>
-							<div class='panel panel-info' id="img-contenedor">
+							<div class='panel panel-info' id="img-contenedor" style="min-width: 80%;margin-right: auto;">
 
-								<div class='panel-heading'></div>
+								<div class='panel-heading' ><label>Articulo:</label><?php echo $fila->product_title  ?>
+
+									  <div>
+                                      $.<?php echo $fila->product_price ?> 
+                                  </div></div>
 								<div class='panel-body'>
-									 <?php echo $fila->product_title  ?>
+								 
 
-									  <div style="position: relative,z-index:2,font-color:blue">
-                                      $.<?php
                                        
 
-                                       echo $fila->product_price ?> </div>
-    
+                                 
+   
 
-<img  style=" cursor: pointer;" src="<?php echo base_url("/product_images/iphone.jpg"); ?>" alt="StackOverflow"   /></div>
+
+ 
+<img  style=" cursor: pointer;max-width:148px;max-height: 192px; " src="<?php echo base_url("/product_images/$fila->product_image"); ?>" alt="StackOverflow"   />
 
 	
-		
 
 
 								</div>
@@ -208,19 +191,19 @@ foreach ($consulta->result() as $fila) {?>
 
 
 
-	</tr>
 
+</tr>
 
 <?php
 }
 
  ?>
-</table>
+
 
 
 							<!--Here we get product jquery Ajax Request-->
 						</div>
-						<div class="col-md-4">
+						<!--<div class="col-md-4">
 							<div class="panel panel-info">
 								<div class="panel-heading">Samsung Galaxy</div>
 								<div class="panel-body">

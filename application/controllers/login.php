@@ -34,7 +34,8 @@ class Login extends CI_Controller {
                 redirect('profile');
 		}else{
 
-               redirect('login#bad-password');
+               echo "<script type=\"text/javascript\">alert(\"Password no coincide \");</script>"; 
+
 
 		}
      }

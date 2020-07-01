@@ -81,6 +81,7 @@
 	<p><br/></p>
 	<p><br/></p>
 	<p><br/></p>
+	
 	<div class="container-fluid">
 
 
@@ -92,27 +93,33 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-2 col-xs-12">
 				
-
-				<div id="get_category">
-
-				</div>
+                 <div id="get_category">
+                       </div>
 
 				<div class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#"><h4>Categories</h4></a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-				</div> -->
+					<li class="active"><a href="#"><h4>Categorias</h4></a></li>
+<?php
+$query = $this->db->query("SELECT * FROM categories LIMIT 100");
+
+foreach ($query->result() as $row)
+{echo '<li onClick="fill(\''.addslashes($row->cat_title).'\');"><a href="profil.php?id='.$row->cat_title.'">'.$row->cat_title.'</a></li>';}?> 
+				</div>
 				<div id="get_brand">
 				</div>
 				<div class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#"><h4>Brand</h4></a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-					<li><a href="#">Categories</a></li>
-				</div> -->
+					<li class="active"><a href="#"><h4>Marcas</h4></a></li>
+					
+
+
+
+
+
+
+
+
+
+
+				</div>
 			</div>
 
 			<div class="col-md-8 col-xs-12">
@@ -126,61 +133,38 @@
 					<div class="panel-body">
 						<div id="get_product">
 
-<table>
-	
 
-	<tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-	</tr>
-
-<?php
+	<?php
 
 
 
 foreach ($consulta->result() as $fila) {?>
 
 
-	<tr>
 
 
+				<div class="col-xs-12 col-sm-6 col-md-4">
 
-				<div class='col-md-4'>
-							<div class='panel panel-info'>
+							<div class='panel panel-info' id="img-contenedor" style="min-width: 80%;margin-right: auto;">
 
-								<div class='panel-heading'></div>
+								<div class='panel-heading' ><label>Articulo:</label><?php echo $fila->product_title  ?>
+
+									  <div>
+                                      $.<?php echo $fila->product_price ?> 
+                                  </div></div>
 								<div class='panel-body'>
-									 <?php echo $fila->product_title  ?>
+								 
 
-									  <div style="position: relative,z-index:2,font-color:blue">
-                                      $.<?php
                                        
 
-                                       echo $fila->product_price ?> </div>
-                                      
-<img src="<?php echo base_url("/product_images/iphone.jpg"); ?>" alt="StackOverflow"  />
+                                 
+   
 
-									
 
+ 
+<img  style=" cursor: pointer;max-width:148px;max-height: 192px; " src="<?php echo base_url("/product_images/$fila->product_image"); ?>" alt="StackOverflow"   />
+
+	
 
 
 								</div>
@@ -197,14 +181,14 @@ foreach ($consulta->result() as $fila) {?>
 
 
 
-	</tr>
 
+</tr>
 
 <?php
 }
 
  ?>
-</table>
+
 
 
 							<!--Here we get product jquery Ajax Request-->
@@ -231,11 +215,6 @@ foreach ($consulta->result() as $fila) {?>
 	</div>
 </body>
 </html>
-
-
-
-
-
 
 
 

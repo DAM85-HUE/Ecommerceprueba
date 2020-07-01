@@ -6,7 +6,7 @@ class Profile extends CI_Controller {
 	
 	public function index()
 	{
-    $result= $this->db->get('products');
+    $result= $this->db->get('products',12,20);
    
     $data=array('consulta'=>$result);
 
